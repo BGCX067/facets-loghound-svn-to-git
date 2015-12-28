@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Facets Log Hound (Alpha 2.0) Demo Page</title>
+<link href="loghound.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="fcts_lib.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="loghound.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+function addLogLevels() {
+    var lvlSelect = document.getElementById('logMsgLevelSelect');
+	var level;
+    for(idx = 0; idx<LogHoundLevels.length; idx++) {
+	    level = LogHoundLevels[idx];
+	    lvlSelect.options[lvlSelect.length] = new Option(level.getText(),level.getId());
+	}
+}
+function enterLogMessage() {
+    var levelId = document.getElementById('logMsgLevelSelect').value;
+    var msg = document.getElementById('logMsgText').value;
+	var what = LogHoundLevels.getById(levelId);
+	var tags = document.getElementById('logMsgTags').value;
+	var tagArray = null;
+	if(tags.indexOf('\r\n')>=0) {
+	    tagArray = tags.split('\r\n');
+	} else {
+	    tagArray = tags.split('\n');
+	}
+	window.logHound.log(LogHoundLevels.getById(levelId),msg,tagArray);
+}
+function onBodyLoad() {
+    window.logHound.doSetup();
+    window.logHound.setLogLevel(LogHoundLevels['TRACE']);
+	document.getElementById('lhVersion').innerHTML = '(v'+LogHoundVer.getLongText()+')';
+	addLogLevels();
+	document.getElementById('logMessage').onclick = enterLogMessage;
+	window.logHound.logFatal('Fatal: If you see this, your app is toast.',['Tag1','AllTags']);
+	window.logHound.logError('Error: Very bad things have happened.',['Tag2']);
+	window.logHound.logWarn('Warn: Hey!  Something\'s off here.',['Tag2']);
+	window.logHound.logInfo('Info: FYI...',['Tag3','AllTags']);
+	window.logHound.logDebug('Debug: Getting into the nitty-gritty of what your app is thinking.',['Tag4']);
+	window.logHound.logTrace('Trace: Two functions and 3454920 log messages later...',['Tag5','AllTags']);
+	return true;
+}
+</script>
+<style type="text/css">
+body {
+    font-family: Arial, Helvetica, serif;
+    font-size: 12px;
+    padding: 3px;
+    width: 800px;
+    margin: 0px auto;
+}
+#facetsPlate {
+    font-family: Verdana, sans-serif;
+	  font-size: 10pt;
+	  color: #000099;
+	  font-weight: bold;
+}
+#header {
+	  font-size: 16pt;
+	  color: #000099;
+	  font-weight: bold;
+}
+.introduction {
+    margin-top: 15px;
+    font-size: 10pt;
+}
+
+#logGeneratorPlate {
+	margin-top: 20px;
+	width: 400px;
+}
+#genHeader {
+    display: block;
+	margin: 0px auto;
+    font-size: 16px;
+	font-weight: bold;
+}
+#logTagsPlate {
+    width: 250px;
+}
+</style>
+
+</head>
+<body onLoad="onBodyLoad();">
+<div id="facetsPlate">Facets Technologies Inc.</div>
+<div id="header">Log Hound Demo Sheet <span id="lhVersion">?</span></div>
+<div id="introduction" class="introduction">
+<p>This is the Log Hound Demonstration page.  Use this page to see what Log Hound can do, and then use the code as a template for how to implement Log Hound for yourself.
+</div>
+<div id="logGeneratorPlate">
+    <span id="genHeader">Log Message Generator</span>
+    <label for="logMsgLevelSelect">Select Level:</label>
+    <select id="logMsgLevelSelect" name="logMsgLevelSelect"></select>
+    <div id="logTagsPlate">
+    <label for="logMsgTags">Enter Message Tags:</label>
+    <textarea id="logMsgTags" name="logMsgTags" cols="20" rows="4"></textarea>
+    </div>
+    <div id="logMessagePlate">
+    <label for="logMsgText">Enter Message Text:</label>
+    <textarea id="logMsgText" name="logMsgText" cols="40" rows="4"></textarea>
+    </div>
+    <input id="logMessage" name="logMessage" type="button" value="Enter">
+</div>
+
+</body>
+</html>

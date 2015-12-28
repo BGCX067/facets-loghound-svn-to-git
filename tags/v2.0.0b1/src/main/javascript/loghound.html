@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Facets Log Hound Demo Page</title>
+<link href="loghound.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="fcts_lib.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="loghound.js" type="text/JavaScript"></script>
+<script language="JavaScript" type="text/JavaScript">
+function addLogLevels() {
+    var lvlSelect = document.getElementById('logMsgLevelSelect');
+	var level;
+    for(idx = 0; idx<LogHoundLevels.length; idx++) {
+	    level = LogHoundLevels[idx];
+	    lvlSelect.options[lvlSelect.length] = new Option(level.getText(),level.getId());
+	}
+}
+function enterLogMessage() {
+    var levelId = document.getElementById('logMsgLevelSelect').value;
+    var msg = document.getElementById('logMsgText').value;
+	var what = LogHoundLevels.getById(levelId);
+	var tags = document.getElementById('logMsgTags').value;
+	var crError = document.getElementById('createError').checked==1;
+	var tagArray = null;
+	if(tags.indexOf('\r\n')>=0) {
+	    tagArray = tags.split('\r\n');
+	} else {
+	    tagArray = tags.split('\n');
+	}
+	var error = null;
+	if(crError) {
+        try{
+            document.body.filters[0].apply()
+        } catch(e){ error = e; }
+	}
+	window.logHound.log(LogHoundLevels.getById(levelId),msg,tagArray,error);
+}
+function onBodyLoad() {
+    window.logHound.doSetup();
+    window.logHound.setLogLevel(LogHoundLevels['TRACE']);
+	document.getElementById('lhVersion').innerHTML = '(v'+LogHoundVer.getLongText()+')';
+	addLogLevels();
+	document.getElementById('logMessage').onclick = enterLogMessage;
+	window.logHound.logFatal('Fatal: If you see this, your app is toast.',['Tag1','AllTags']);
+	window.logHound.logError('Error: Very bad things have happened.',['Tag2']);
+	window.logHound.logWarn('Warn: Hey!  Something\'s off here.',['Tag3']);
+	window.logHound.logInfo('Info: FYI...',['Tag4','AllTags']);
+	window.logHound.logDebug('Debug: Getting into the nitty-gritty of what your app is thinking.',['Tag5']);
+	window.logHound.logTrace('Trace: Two functions and 3454920 log messages later...',['Tag6','AllTags']);
+	
+	return true;
+}
+</script>
+<style type="text/css">
+body {
+    font-family: Arial, Helvetica, serif;
+    font-size: 12px;
+    padding: 3px;
+    width: 800px;
+    margin: 0px auto;
+} 
+.mainFont {
+    font-family: Verdana, sans-serif;
+    font-size: 10pt;
+}
+#facetsPlate {
+    font-family: Verdana, sans-serif;
+    font-size: 10pt;
+    color: #000099;
+    font-weight: bold;
+}
+#header {
+    font-size: 16pt;
+    color: #000099;
+    font-weight: bold;
+}
+.introduction {
+    margin-top: 15px;
+    font-size: 10pt;
+}
+#logGeneratorPlate {
+	margin-top: 20px;
+	width: 345px;
+	float: left;
+}
+#genHeader {
+	margin-bottom: 15px;
+    font-size: 12pt;
+	font-weight: bold;
+	float: left;
+}
+#logTagsPlate {
+    width: 183px;
+    float: right;
+    margin-left: 5px;
+}
+#logMessagePlate {
+    float: left;
+    clear: both;
+}
+#logMsgLevelSelect {
+    border: 1px solid black;
+}
+#logMsgLevelSelectLabel { }
+#logMsgLevelSelect {
+    font-size: 8pt
+}
+#enterBtnPlate {
+    margin-top: 7px;
+}
+#createErrorPlate {
+    margin-top: 7px;
+}
+#createError {
+    vertical-align: -2px;
+    margin: 0px;
+    padding: 0px;
+}
+#createErrorLabel {
+
+}
+#logMsgText {}
+#genCtrls {
+    clear:both;
+    float:left; 
+}
+.outline {
+    /* border: 1px solid black; */
+}
+</style>
+
+</head>
+<body onLoad="onBodyLoad();">
+<div id="facetsPlate">Facets Technologies Inc.</div>
+<div id="header">Log Hound Demo Sheet <span id="lhVersion">?</span></div>
+<div id="introduction" class="introduction">
+<p>This is the Log Hound Demonstration page.  Use this page to see what Log Hound can do, and then use the code as a template for how to implement Log Hound for yourself.
+</div>
+<div id="logGeneratorPlate" class="outline">
+    <span id="genHeader">Log Message Generator</span>
+    <div id="genCtrls" class="outline">
+        <div id="levelSelectPlate" class="outline">
+            <label id="logMsgLevelSelectLabel" class="outline" for="logMsgLevelSelect">Select Level:</label>
+            <select id="logMsgLevelSelect" class="mainFont" name="logMsgLevelSelect"></select>
+        </div>
+        <div id="createErrorPlate" class="outline">
+             <label id="createErrorLabel" class="outline" for="createError">Create Error:</label>
+             <input type="checkbox" id="createError" name="createError" value="createError" />
+        </div>
+        <div id="enterBtnPlate" class="outline"><input id="logMessage" name="logMessage" type="button" value="Enter"></div>
+    </div>
+    <div id="logTagsPlate" class="outline">
+        <label for="logMsgTags">Enter Message Tags:</label>
+        <textarea id="logMsgTags" name="logMsgTags" cols="20" rows="4"></textarea>
+    </div>
+    <div id="logMessagePlate" class="outline">
+        <label class="outline" for="logMsgText">Enter Message Text:</label>
+        <textarea id="logMsgText" name="logMsgText" cols="40" rows="4"></textarea>
+    </div>
+</div>
+
+</body>
+</html>

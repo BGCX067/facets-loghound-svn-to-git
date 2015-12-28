@@ -1,0 +1,48 @@
+#labels Featured
+====1. What the hell?====
+
+Yes - it's another !JavaScript thingy.  But this one might actually be very helpful.  Log Hound wasn't designed in absentia of any driving need.  On the contrary, I developed this little utility whilst wading my way through over a thousand lines of combined ECMAscript, JQuery, and Microsoft JScript, all of which were going to be used solely on IE 7 and 8.  If that doesn't scare a developer into wanting to find a better way to debug, then I don't know what would.
+
+====2. Why???====
+
+Firebug really isn't an option for !JavaScript problems in IE.  If your first thought-reaction to that is "Why not just use IE Web Developer Toolbar", then you haven't used WDT on large complicated !JavaScript projects.  If you have, then I sincerely hope you are getting paid more than me.
+
+====3. Seriously?????====
+
+Your banal questions bore me.  Bring it.
+
+====4. Seriously - what does it do?====
+
+As of today (9/27/2010), Log Hound is only a !JavaScript logger (functional forshadowing!).  It provides a framework by which you can use !JavaScript methods to store messages in the order they were received so that they may be displayed in the Log Hound User interface.  Using the Log Hound interface, you can select which log messages to view based on several different criteria provided by the many interface controls.
+Translated into cyber-colloquial terms: it throws strings at a floating div and allows you to block/none records using multivariate analysis. Word.
+
+A simple example of logging a message would look something like this:
+{{{
+window.logHound.logWarn('This is a warning message.',['methodName','anotherTag']);
+}}}
+
+====5. Err... Browser Support?====
+
+Log Hound is being coded to work perfectly in Firefox, Chrome, Opera, and probably Safari if it doesn't tick me off.  As for IE, well, I'll make an effort.  The point is that W3C standards come first.  Crappy maniacal insecure monopoly-driven browsers come second. See our [CompatibilityMatrix compatibility matrix] for more.
+
+====6. But Internet Explorer has 99% of the market!====
+
+No.  It doesn't.  Internet Explorer's market share world wide dropped below 50% as of October 2010.  That's what Microsoft gets for driving Netscape out of the market, then cutting the IE development team to one person for three years (basically proof that they only cared about keeping their desktop monopoly safe, not about building a good browser). If it hadn't been for Firefox and to a lesser extent, Opera (sorry Opera guys!), we'd all still be using IE5. Just think about that for a while.
+
+Look - I've wasted almost half my time on this project trying to get the damned thing to look right in IE, instead of actually improving the functionality. Chrome, Opera, Safari, and Firefox all work with the same code, so why can't Internet Explorer?  So I've made a decision to stop worrying about it and to concentrate on building a really good tool that works on standards compliant browsers.  If someone comes along who wants to help fix the IE look and feel, I will welcome them with open arms (and probably pay them too!). Otherwise, I'll make it look passable in IE and move on with my life... and the project.
+
+====7. What does it depend on?====
+
+Everything Log Hound depends on is included in the zip package.  There's no dependency on JQuery, Prototype, or any other !JavaScript framework.  Log Hound uses 100% pure ECMA-262 edition 3 spec !JavaScript (Basically !JavaScript v 1.5, since only Firefox and Chrome supports 1.6 or above)
+
+====8. What about _{insert favourite JS framework name here}_??? Why did you bother not just using _{framework name here again to up its google score}_?  You are an idiot and wasting time if you don't use _{name framework for third time to summon its planar avatar to destroy non-utilizing projects}_ instead of writing all that lame JS code.====
+
+{Sigh}.  Let's get one thing straight - I, and any competent !JavaScript coder, can do anything with standard JS that you can do with your awesome framework.  The ONLY things frameworks like JQuery and Prototype give you is some brevity of code and respite from having to figure out some browser quirks on your own.
+
+And let's be brutally honest here - THERE ARE DRAWBACKS!  Some projects require more than your say-so to decide to use a JS framework.  Most of the time, you - the coder that needs to use something like Log Hound, is so far removed from those that make the decision whether or not you can add Dojo, et al, to the project, that you make kindergarten kids look like the power brokers of their classroom.
+
+This is to say that there are a lot of coders out there that might like to use Log Hound, and they wouldn't be able to if they had to kite along the rest of a JS framework with it.
+So the answer to this question is this: We are coding Log Hound to be usable by everyone first.  There will be time later to contemplate integration with the larger !JavaScript frameworks in the market.
+
+====9. How do I create an instance of Log Hound?====
+In the words of one Science Fiction legend: "There can be only one!"  There is always and ever one instance of Log Hound working at any given time on a web page.  You do not create an instance of Log Hound - an instance is created in the DOM window object at {{{window.logHound}}} just by including the {{{loghound.js}}} code file.  You still have to call {{{window.logHound.doSetup()}}} for that instance to be operational, but you cannot create your own instances.

@@ -1,0 +1,72 @@
+#labels Featured
+Using Log Hound is supposed to be easy. In order to make sure it's easy, we've tested usage on banjo players and upper management (project manager and above) - because end users turned out to be too intelligent for our needs.  During that testing, we honed our log function signatures down to lean, succinct, and intuitively obvious usage patterns.  Ok - basically the functions are the same you see in every major logging framework you've ever encountered.  Why mess with what works?
+
+----
+
+==The Log Functions==
+
+These are the functions you will want to get familiar with. 
+
+ * *{{{log()}}} :* Generic logging function that takes all the arguments that the level-specific log functions do, but also requires a !LogHoundLevel object to denote the log level of the message.  This is used in cases where you want write ~~dangerous and unnecessary~~ clever code
+ * *{{{logTrace()}}} :* Log a trace message.
+ * *{{{logDebug()}}} :* Log a debug message.
+ * *{{{logInfo()}}} :* Log an info message.
+ * *{{{logWarn()}}} :* Log a warn message.
+ * *{{{logError()}}} :* Log an error message.
+ * *{{{logFatal()}}} :* Log a fatal message.
+
+For the level-specific log functions, the arguments list currently stands as such:
+
+ * *{String} message :* The message to be logged.  This argument is required, as without it you are just teasing my nice framework.
+ * *{String[ ]} tags :* A string array of tags to associate with the message.  Tags can be used in searching through the messages in new and exciting ways! (Nice promo -ed)
+ * *{Error} error :* An error object that you caught.  This will be pretty-printed after the message in the log entry.
+
+*NOTE:* The order of the arguments does not matter for any of the log functions. Log Hound has a rather ~~twisted~~ ingenious arguments parser that manages the log function arguments.
+
+----
+
+==Simple Message==
+
+You want to log a message.  There are two ways to do this:
+
+ # Use the generic "log()" function, or
+ # Use the level specific log function you desire
+
+The following two lines are analogous.  The first uses the generic log function which you can use in instances where you are entering log messages using some kind of eval (AKA "evil") code.  The second is your base-level log message entry line.
+
+{{{
+window.logHound.log(LogHoundLevels['INFO'],'My message here.');
+
+window.logHound.logInfo('My message here.');
+}}}
+
+----
+
+==Message Tags==
+
+Tags can be associated with any log message. Tags are used in grouping messages together to make it easier to search for specific messages.  One way tags can be used is to separate log messages from different frameworks.  Each framework would include the framework name as a tag on every message logged in that framework.  In that way you could exclude all the messages from, say, your calendar !JavaScript component from the rest of the messages, and then search using text matching without worrying about having to wade through the calendar messages as well.
+
+*Note:* Message tags can only be alphanumeric. No periods, apostrophes, commas, etc...  This is a bug that will be fixed in a later version.
+
+To associate tags with the message, simply add an array of strings to the log function arguments:
+{{{
+window.logHound.logInfo('My message here.',['Tag1','Tag2']);
+}}}
+
+There are no limits to how many tags you can associate with a message, but use this intelligently - don't add too many tags to every message or searching will become a study in shooting yourself in the foot.
+
+----
+
+==Errors==
+
+In those extremely rare instances where persons unknown somehow managed to mess up your code in the five seconds between saving the new script and running it, causing untold mayhem and resulting in an error being thrown, you can add the Error object to the log function arguments.  When an Error object is encountered, Log Hound will try to pretty-print the error details and append that information to the log entry after the message text.
+
+{{{
+try {
+    // do something stupid
+} catch(err) {
+    window.logHound.logError('Game over man!',['frameworkName'],err);
+}
+}}}
+
+----

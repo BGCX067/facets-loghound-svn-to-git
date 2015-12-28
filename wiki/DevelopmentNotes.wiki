@@ -1,0 +1,34 @@
+==Minification==
+
+====Links====
+[http://developer.yahoo.com/yui/compressor YUI Compressor Home]<br/>
+[http://yuilibrary.com/downloads/ YUI Compressor Download]
+
+====Info====
+YUI Compressor seems to work well for 2.0.0 beta 1:
+{{{
+loghound.js      43,626 bytes
+loghound-min.js  29,137 bytes
+}}}
+
+====Code====
+To minify loghound.js:
+{{{
+java -jar yuicompressor.jar -v --charset utf-8 --line-break 4000 -o loghound-min.js loghound.js
+}}}
+
+----
+
+==!JsDoc==
+[http://code.google.com/p/jsdoc-toolkit/ JsDoc Toolkit] seems to be the tool to use.
+
+====Reference====
+
+[http://code.google.com/p/jsdoc-toolkit/wiki/CommandlineOptions]
+
+[http://code.google.com/p/jsdoc-toolkit/wiki/TagReference]
+
+====Code====
+{{{
+java -jar jsrun.jar app/run.js loghound.js -t=templates/jsdoc
+}}}

@@ -1,0 +1,293 @@
+/*
+#D79900
+#91B4DE
+#688DE0
+
+#FFF2BA
+#DFEAF8
+*/
+.lhFont {
+    font-family: Verdana,Tahoma,Arial,Helvetica,sans-serif;
+    letter-spacing: -0.02em;
+}
+.lhRndCorners {
+/*
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -moz-border-radius: 5px;
+	border-radius: 5px;
+*/
+}
+.lhPlateColor {
+    background-color: #DFEAF8;
+    border-color: #688DE0;
+}
+.lhInput {
+    font-size: 7pt;
+}
+.lhBtn {
+    cursor:pointer;
+    cursor:hand;
+    width: 15px;
+    font-weight: bold;
+}
+.lhBtnOut {
+    border: 1px solid #DFEAF8;
+}
+.lhBtnOver {
+    border: 1px solid #000000;
+}
+.lhBtnOn {
+    border:1px solid #CB5C16;
+}
+.lhCtrl {
+    display: block;
+    font-size: 8pt;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    height: 14px;
+}
+.lhCtrlSize {
+    float: left;
+}
+#lhBtnHelp {
+    display: block;
+    font-size: 8pt;
+    font-weight: bold;
+    width: 15px;
+    text-align:center;
+}
+#lhBtnTags {
+    display: block;
+    font-size: 8pt;
+    font-weight: bold;
+    width: 15px;
+    text-align: center;
+}
+#lhCtrlLvlSelectPlate {
+    margin-left: 10px;
+    float: left;
+}
+#lhLvlSelect {
+    font-size: 7pt;
+    height: 1.8em;
+}
+#lhCtrlLvlPlate {
+    margin-top: 1px;
+    margin-left: 7px;
+    float: left;
+}
+.lhCtrlLvl {
+    /* border: 1px #688DE0 solid; */
+    margin: 0px !important;
+    float: left;
+    width: 15px;
+}
+#lhCtrlMsgDispModePlate {
+    float: left;
+    margin: 1px 0px 0px 7px;
+}
+#lhCtrlSearchPlate {
+    margin-top: 1px;
+    float: right;
+}
+.lhDispModeLable {
+    font-size: 7pt;
+    font-weight: bold;
+}
+.lhSearchLabel {
+    font-size: 7pt;
+    font-weight: bold;
+    width: 5em;
+    float: left;
+    text-align: right;
+    display: block;
+    white-space:nowrap;
+}
+.lhSearchField {
+    font-size: 7pt;
+    text-align: left;
+    width: 100px;
+    float: left;
+    height: 1.8em;
+}
+.lhTitleLeft {
+    display: block;
+    width: 20px;
+    height: 14px
+}
+.lhTitle {
+    font-size: 8pt;
+    font-weight: bold;
+    width: 100%;
+    height: 14px
+}
+.lhBtnCtrls {
+    display: block;
+    font-size: 8pt;
+    font-weight: bold;
+    text-align:center;
+    white-space:nowrap;
+    height: 14px;
+    width: 18px;
+}
+#lhPlate {
+    width: 400px;
+    height: 100px;
+    border: 3px #688DE0 solid;
+    position: absolute;
+    background-color: #688DE0;
+    display: none;
+}
+#lhPlateHead {
+    height: 16px;
+    font-size: 8pt;
+    font-weight: bold;
+    border-bottom: 3px solid #688DE0;
+    padding: 0px 4px;
+}
+#lhPlateHelpPanel {
+    height: 3em !important;
+}
+#lhPlateCtrlPanel, #lhPlateHelpPanel{
+    position: relative;
+    height: 2em;
+    font-size: 8pt;
+    font-weight: normal;
+    border-bottom: 3px solid #688DE0;
+    padding: 1px 6px 0px 6px;
+    display: none;
+}
+#lhPlateTagPanel {
+    font-size: 7pt;
+    overflow: auto;
+    border-bottom: 3px solid #688DE0;
+    padding: 2px;
+    display: none;
+    text-align: center;
+}
+#lhPlateBodyBox {
+    clear: both;
+    height: 81px;
+    position: relative;
+    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: none;
+}
+#lhPlateBody {
+    position: relative;
+    overflow: hidden;
+}
+.lhMsgElmt {
+    font-size: 7pt;
+    word-wrap: break-word;
+    padding: 1px 2px;
+    margin: 0px;
+}
+.lhMsgNum {
+    border-right: 1px #AAAAAA solid;
+    width: 20px;
+}
+.lhMsgLvl {
+    border-right: 1px #AAAAAA solid;
+    width: 40px;
+}
+.lhMsgTime {
+    border-right: 1px #AAAAAA solid;
+    width: 1%;
+}
+.lhMsgTxt {
+    word-wrap: break-word;
+}
+.lhMsgTxtFull {
+    border-top: 1px #AAAAAA solid;
+}
+.logMsg {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+.logMsg > table {
+    border-spacing: 0px;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+.logMsg > table > tbody {
+    border-spacing: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+.lhFatalMsg {
+    background-color: #FFBFFB;
+}
+.lhErrorMsg {
+    background-color: #FFBFBF;
+}
+.lhWarnMsg {
+    background-color: #FBFFBF;
+}
+.lhInfoMsg {
+    background-color: #BFFFBF;
+}
+.lhDebugMsg {
+    background-color: #BFFDFF;
+}
+.lhTraceMsg {
+    background-color: #BFD7FF;
+}
+
+
+#lhAvailTagsPlate {
+    width: 150px;
+    float: left;
+    text-align: left;
+}
+#lhCtrlTagsPlate {
+    margin: 8px 3px 0px 3px;
+    vertical-align: middle;
+    width: 23px;
+    text-align: center;
+    float: left;
+}
+.lhTagCtrl {
+    display: block;
+    cursor:pointer;
+    cursor:hand;
+    margin: 0px auto;
+}
+#lhTagCtrlRem {
+    margin-top: 2px;
+}
+#lhViewTagsPlate {
+    width: 150px;
+    float: left;
+    text-align: left;
+}
+
+
+#lhAvailTagsSelect {
+    width: 150px;
+}
+#lhViewTagsSelect {
+    width: 150px;
+}
+#lhModTagsPlate {
+    margin: 12px 3px 0px 3px;
+    vertical-align: middle;
+    width: 18px;
+    text-align: center;
+    float: left;
+}
+.lhShrinkWrap {
+    margin-left: auto;
+	  margin-right: auto;
+	  display: inline-block;
+}
+div#lhPlateHead
+{
+ *     zoom: 1;
+}

@@ -1,0 +1,336 @@
+/*
+#D79900
+#91B4DE
+#688DE0
+
+#FFF2BA
+#DFEAF8
+*/
+.lhFont {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 8pt;
+}
+.lhSmFont {
+    font-family: Verdana,Tahoma,Arial,Helvetica,sans-serif;
+    font-size: 7pt;
+    letter-spacing: -0.02em;
+}
+.lhRndCorners {
+/*
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -moz-border-radius: 5px;
+	border-radius: 5px;
+*/
+}
+.lhPlateColor {
+    background-color: #DFEAF8;
+    border-color: #688DE0;
+}
+.lhInput {
+    font-size: 7pt;
+}
+.lhBtn {
+    cursor:pointer;
+    cursor:hand;
+    font-weight: bold;
+    text-align: center;
+    width: 15px;
+}
+.lhBtnOut {
+    border: 1px solid #DFEAF8;
+}
+.lhBtnOver {
+    border: 1px solid #000000;
+}
+.lhBtnOn {
+    border:1px solid #CB5C16;
+}
+.lhCtrl {
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+}
+#lhBtnHelp {
+    display: block;
+    font-size: 8pt;
+    font-weight: bold;
+    text-align:center;
+}
+#lhBtnTags {
+    display: block;
+    font-size: 8pt;
+    font-weight: bold;
+    text-align: center;
+}
+#lhCtrlLvlSelectPlate {
+    margin-left: 5px;
+}
+#lhLvlSelect {
+    font-size: 7pt;
+    height: 1.8em;
+}
+#lhCtrlLvlPlate {
+    margin-left: 5px;
+}
+.lhCtrlLvl {
+    /* border: 1px #688DE0 solid; */
+    margin: 0px !important;
+    float: left;
+}
+#lhCtrlMsgDispModePlate {
+    float: left;
+    margin: 1px 0px 0px 7px;
+}
+#lhCtrlSearchPlate {
+    margin-left: 5px;
+}
+.lhDispModeLable {
+    font-size: 7pt;
+    font-weight: bold;
+}
+.lhSearchLabel {
+    font-size: 7pt;
+    font-weight: bold;
+    text-align: right;
+    display: inline;
+    white-space: nowrap;
+}
+.lhSearchField {
+    font-size: 7pt;
+    text-align: left;
+    width: 100px;
+
+}
+.lhTitleLeft {
+    display: block;
+    width: 20px;
+    height: 14px;
+}
+.lhTitle {
+    font-family: Arial,Helvetica,sans-serif;
+    letter-spacing: 0.0em;
+    font-size: 8pt;
+    font-weight: bold;
+    width: 100%;
+    height: 14px;
+    padding-left: 5px;
+    text-align: left;
+}
+.lhBtnCtrls {
+    display: block;
+    font-size: 8pt;
+    font-weight: bold;
+    text-align:center;
+    white-space:nowrap;
+    width: 18px;
+}
+#lhPlate {
+    width: 400px;
+    height: 100px;
+    border: 3px #688DE0 solid;
+    position: absolute;
+    background-color: #688DE0;
+    display: none;
+}
+#lhPlateHead {
+    height: 16px;
+    font-size: 8pt;
+    font-weight: bold;
+    border-bottom: 3px solid #688DE0;
+    padding: 0px 4px;
+}
+#lhPlateHelpPanel {
+    height: 3em !important;
+    border-bottom: 3px solid #688DE0;
+    padding: 0px 6px 0px 6px;
+    display: none;
+    text-align: left;
+}
+#lhPlateCtrlPanel {
+    font-size: 8pt;
+    font-weight: normal;
+    border-bottom: 3px solid #688DE0;
+    padding: 0px 6px 0px 6px;
+    display: none;
+}
+#lhPlateCtrlPanel > table {
+    width: 100%;
+}
+#lhCtrlMsgDispModeBtn {
+    margin-left: 5px;
+}
+#lhPlateTagPanel {
+    font-size: 7pt;
+    overflow: auto;
+    border-bottom: 3px solid #688DE0;
+    padding: 2px;
+    display: none;
+    text-align: center;
+}
+#lhPlateBodyBox {
+    clear: both;
+    height: 81px;
+    position: relative;
+    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#lhPlateBody {
+    position: relative;
+    overflow: hidden;
+}
+#lhInterfaceBody {
+    margin: 0px;
+    padding: 0px;
+}
+.lhMsgPad {
+    display: inline;
+    padding: 5px;
+}
+.lhMsgRecDetail {
+    padding: 0px;
+    margin: 0px;
+    border-collapse: collapse;
+}
+.lhMsgElmt {
+    font-size: 7pt;
+    padding: 0px;
+    margin: 0px;
+}
+.lhMsgNum2 {
+    border-right: 1px #AAAAAA solid;
+    display: inline-block;
+  * display: inline;
+    width: 30px;
+    padding: 1px;
+}
+.lhMsgNum {
+    border-right: 1px #AAAAAA solid;
+    width: 30px;
+}
+.lhMsgLvl2 {
+    border-right: 1px #AAAAAA solid;
+    display: inline-block;
+  * display: inline;
+    width: 35px;
+    padding: 1px;
+}
+.lhMsgLvl {
+    border-right: 1px #AAAAAA solid;
+    width: 40px;
+}
+.lhMsgTime2 {
+    border-right: 1px #AAAAAA solid;
+    display: inline-block;
+  * display: inline;
+    padding: 1px;
+}
+.lhMsgTime {
+    border-right: 1px #AAAAAA solid;
+    text-align: center;
+    width: 8.2em;
+}
+.lhMsgTags2 {
+    display: inline-block;
+  * display: inline;
+    padding: 1px;
+}
+.lhMsgTxtFull2 {
+    border-top: 1px #AAAAAA solid;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-x: auto;
+    padding: 2px;
+}
+.lhMsgTxt {
+    word-wrap: break-word;
+    overflow: visible;
+}
+.lhMsgTxtFull {
+    border-top: 1px #AAAAAA solid;
+    word-wrap: break-word;
+}
+.logMsg {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+}
+.logMsg > table {
+    border-spacing: 0px;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    table-layout: fixed;
+}
+.logMsg > table > tbody {
+    border-spacing: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+.lhFatalMsg {
+    background-color: #FFBFFB;
+}
+.lhErrorMsg {
+    background-color: #FFBFBF;
+}
+.lhWarnMsg {
+    background-color: #FBFFBF;
+}
+.lhInfoMsg {
+    background-color: #BFFFBF;
+}
+.lhDebugMsg {
+    background-color: #BFFDFF;
+}
+.lhTraceMsg {
+    background-color: #BFD7FF;
+}
+#lhAvailTagsPlate {
+    width: 150px;
+    float: left;
+    text-align: left;
+}
+#lhCtrlTagsPlate {
+    margin: 8px 3px 0px 3px;
+    vertical-align: middle;
+    width: 23px;
+    text-align: center;
+    float: left;
+}
+.lhTagCtrl {
+    display: block;
+    cursor:pointer;
+    cursor:hand;
+    margin: 0px auto;
+    line-height: 12px;
+}
+#lhTagCtrlRem {
+    margin-top: 2px;
+}
+#lhViewTagsPlate {
+    width: 150px;
+    float: left;
+    text-align: left;
+}
+#lhAvailTagsSelect {
+    width: 150px;
+}
+#lhViewTagsSelect {
+    width: 150px;
+}
+#lhModTagsPlate {
+    margin: 5px 3px 0px 3px;
+    vertical-align: middle;
+    width: 18px;
+    text-align: center;
+    float: left;
+}
+.lhShrinkWrap {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+.lhMsgRecBrief {
+}
